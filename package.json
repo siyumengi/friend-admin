@@ -1,0 +1,29 @@
+{
+  "name": "friend-admin",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3001",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "ant-design-vue": "^3.2.20",
+    "axios": "^1.4.0",
+    "lodash-es": "^4.17.21",
+    "openapi-tool": "^0.4.6",
+    "qs": "^6.11.2",
+    "umi-request": "^1.4.0",
+    "vue": "^3.2.47",
+    "vue-router": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.7",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9",
+    "vue-tsc": "^1.4.2"
+  }
+}
