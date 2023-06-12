@@ -1,6 +1,6 @@
 <template>
   <a-button class="editable-add-btn" style="margin-bottom: 8px" @click="handleAdd">添加用户</a-button>
-  <a-table bordered :data-source="user" :columns="columns"
+  <a-table bordered :data-source="user" :columns="columns" @change="onChange"
            :scroll="{ x: 1700 , y: 600  }"
            row-key="id"
   >
@@ -55,7 +55,7 @@
 import type {Ref, UnwrapRef} from 'vue';
 import {onMounted, reactive, ref} from 'vue';
 import {CheckOutlined, EditOutlined} from '@ant-design/icons-vue';
-import {message} from "ant-design-vue";
+import {message, TableProps} from "ant-design-vue";
 import {getAllUser, getDelete, getUpdateUser} from "../services/user";
 import {cloneDeep} from "lodash-es";
 import {UserType} from "../models/user";
@@ -92,8 +92,8 @@ const columns = [
   {
     title: '年龄',
     dataIndex: 'age',
-    key: "age"
-
+    key: "age",
+    sorter: (a: UserType, b: UserType) => a.age > b.age
   },
   {
     title: '邮箱',
@@ -104,8 +104,22 @@ const columns = [
   {
     title: '性别',
     dataIndex: 'gender',
-    key: "gender"
-
+    key: "gender",
+    filters: [
+      {
+        text: '未知',
+        value: '未知',
+      },
+      {
+        text: '男',
+        value: '男',
+      },
+      {
+        text: '女',
+        value: '女',
+      }
+    ],
+    onFilter: (value: string, record) => record.gender.indexOf(value) === 0
   },
   {
     title: '手机号',
@@ -153,7 +167,9 @@ const columns = [
 
 ];
 const user: Ref<UserType[]> = ref([]);
-
+const onChange: TableProps<UserType>['onChange'] = (pagination, filters, sorter) => {
+  console.log('params', pagination, filters, sorter);
+}
 // const count = computed(() => user.value.length + 1);
 const editableData: UnwrapRef<Record<string, UserType>> = reactive({});
 const genderMap = {
