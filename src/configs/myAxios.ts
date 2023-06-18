@@ -19,6 +19,9 @@ myAxios.interceptors.request.use(function (config) {
 myAxios.interceptors.response.use(function (response) {
     // Do something with response data
     // console.log("myAxios" , response)
+    if (response?.data?.code === 40100) {
+        window.location.href = '/login';
+    }
     return response.data;
 }, function (error) {
     // Do something with response error

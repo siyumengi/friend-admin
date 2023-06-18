@@ -47,7 +47,7 @@ interface userFormat {
 
 const user = reactive<userFormat>({
   userAccount: "siyumeng",
-  userPassword: "123456789",
+  userPassword: "12345678",
 });
 
 const onFinish = (values: any) => {
@@ -67,7 +67,9 @@ const UserLogin = async () => {
 
     return;
   }
+  localStorage.setItem('user', JSON.stringify(res));
   message.success("登录成功")
+
   router.push({
     path:"/"
   })

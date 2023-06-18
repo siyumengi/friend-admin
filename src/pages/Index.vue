@@ -29,7 +29,10 @@ const getImgUrl = (i: number) => {
   return imgList[i].imgUrl;
 };
 
+onMounted(async () =>{
+ // let currentUser = getCurrentUser();
 
+})
 
 </script>
 

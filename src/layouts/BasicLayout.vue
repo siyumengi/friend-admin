@@ -110,6 +110,7 @@ const logout = async () => {
     message.error("退出失败");
   }
   message.success("退出成功");
+  localStorage.removeItem("user")
   router.push({
     path:"/login"
   })

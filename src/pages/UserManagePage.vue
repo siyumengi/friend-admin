@@ -1,5 +1,5 @@
 <template>
-  <a-button class="editable-add-btn" style="margin-bottom: 8px" @click="handleAdd">添加用户</a-button>
+<!--  <a-button class="editable-add-btn" style="margin-bottom: 8px" @click="handleAdd">添加用户</a-button>-->
   <a-table bordered :data-source="user" :columns="columns" @change="onChange"
            :scroll="{ x: 1700 , y: 600  }"
            row-key="id"
